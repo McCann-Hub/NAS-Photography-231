@@ -1,0 +1,1 @@
+<gallery-flex directory="test" />
