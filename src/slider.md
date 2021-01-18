@@ -1,0 +1,1 @@
+<gallery-slider class="h-screen" directory="test" />
