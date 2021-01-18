@@ -2,6 +2,7 @@ const path = require('path');
 
 module.exports = {
   dest: './dist',
+  base: '/NAS-Photography-231/',
   title: 'NAS Photography 231',
   description: 'A Vuepress powered blog',
   configureWebpack: {
