@@ -1,6 +1,5 @@
 <template>
-  <div id="gallery" class="min-h-full relative flex justify-center overflow-hidden">
-    <div class="left-0" @click="previous">&#x276E;</div>
+  <div id="gallery" class="min-h-full relative flex justify-center items-center overflow-hidden">
     <transition :name="transitionName">
       <img
         :key="display.name"
@@ -9,6 +8,7 @@
         class="max-h-screen rounded"
       />
     </transition>
+    <div class="left-0" @click="previous">&#x276E;</div>
     <div class="right-0" @click="next">&#x276F;</div>
   </div>
 </template>
