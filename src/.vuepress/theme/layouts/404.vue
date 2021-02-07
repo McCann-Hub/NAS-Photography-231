@@ -1,11 +1,11 @@
 <template>
   <div
-  id="not-found"
-    class="flex justify-center bg-gray-100 bg-opacity-50"
+    id="not-found"
+    class="flex justify-center bg-gray-100 bg-opacity-50 dark:bg-gray-900 dark:bg-opacity-50"
   >
     <div class="flex flex-col justify-center">
       <h1 class="text-center text-5xl font-bold">Oops</h1>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 960">
+      <svg ref="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 960">
         <g>
           <rect x="233.5" y="176.6" class="card" width="493" height="606.7" />
           <rect x="234.5" y="743.8" class="footer" width="491" height="39.5" />
@@ -36,30 +36,37 @@
       </svg>
 
       <p class="text-center text-3xl font-semibold">
-        It looks like this site is still developing
-      </p>
-      <!--p class="text-center text-3xl font-semibold">
         It looks like this page is still developing
-      </p-->
+      </p>
     </div>
   </div>
 </template>
 
 <script>
+function getRandomArbitrary(min, max) {
+  return Math.random() * (max - min) + min;
+}
+
 export default {
   name: "NotFound",
+  mounted() {
+    this.$refs.svg.style.setProperty(
+      "--photo-rotation",
+      `${getRandomArbitrary(-30, 30)}deg`
+    );
+  },
 };
 </script>
 
 <style scoped>
 #not-found {
-  min-height: 100vh;
+  max-height: 100vh;
 }
 
 #not-found svg {
   max-height: calc(100vh - 19rem);
   max-width: 80vw;
-  transform: rotate(-30deg);
+  transform: rotate(var(--photo-rotation));
 }
 
 #not-found svg .footer {
