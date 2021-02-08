@@ -3,7 +3,7 @@
     id="gallery"
     class="relative flex justify-center items-center overflow-hidden"
   >
-    <transition :name="transitionName">
+    <transition v-if="directory" :name="transitionName">
       <img
         v-if="display"
         :key="display.name"
@@ -12,6 +12,16 @@
         class="max-h-full"
       />
     </transition>
+    <transition v-else :name="transitionName">
+      <nav-link v-if="display" :link="display.link" :key="display.name">
+        <img
+          :alt="display.name"
+          :title="display.summary"
+          :src="display.src"
+          class="max-h-full"
+        />
+      </nav-link>
+    </transition>
     <div class="left-0" @click="previous">&#x276E;</div>
     <div class="right-0" @click="next">&#x276F;</div>
   </div>
@@ -19,8 +29,10 @@
 
 <script>
 import Gallery from "@mixins/gallery.js";
+import NavLink from "../../../theme/global-components/NavLink.vue";
 
 export default {
+  components: { NavLink },
   name: "GallerySlider",
   mixins: [Gallery],
   data: () => ({
@@ -47,7 +59,7 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-#gallery {
+#gallery, #gallery a {
   height: calc(var(--main-height) - 4.5rem);
 }
 

@@ -1,3 +1,4 @@
 ---
+  summary: "Sliding Carousel Gallery"
 ---
-<gallery-slider directory="test" />
+<gallery-slider directory="slider" />

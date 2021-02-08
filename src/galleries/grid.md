@@ -1,3 +1,4 @@
 ---
+  summary: "CSS Grid Gallery"
 ---
-<gallery-grid directory="test" />
+<gallery-grid directory="grid" />

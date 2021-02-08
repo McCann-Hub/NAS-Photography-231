@@ -4,23 +4,29 @@ export default {
   props: {
     directory: {
       type: String,
-      required: true,
+    },
+    navImages: {
+      type: Array,
     },
   },
   data: () => ({
     images: [],
   }),
   created() {
-    directoryImages(this.directory).forEach((imageFilePath) => {
-      galleryContext(imageFilePath).then((image) => {
-        this.images.push({
-          name: imageFilePath
-            .split('/')
-            .pop()
-            .split('.')[0],
-          src: image,
+    if (this.directory) {
+      directoryImages(this.directory).forEach((imageFilePath) => {
+        galleryContext(imageFilePath).then((image) => {
+          this.images.push({
+            name: imageFilePath
+              .split('/')
+              .pop()
+              .split('.')[0],
+            src: image,
+          });
         });
       });
-    });
+    } else {
+      this.images.splice(0, this.images.length, ...this.navImages);
+    }
   },
 };

@@ -1,3 +1,4 @@
 ---
+  summary: "CSS Flex Gallery"
 ---
-<gallery-flex directory="test" />
+<gallery-flex directory="flex" />

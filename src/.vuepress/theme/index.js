@@ -9,10 +9,9 @@ function getRandomIntInclusive(min, max) {
 
 module.exports = () => {
   const imagesDirectory = path.resolve(__dirname, '..', 'public', 'images');
-  if (fs.existsSync(imagesDirectory)) {
-    fs.rmdirSync(imagesDirectory, { recursive: true, force: true });
+  if (!fs.existsSync(imagesDirectory)) {
+    fs.mkdirSync(imagesDirectory);
   }
-  fs.mkdirSync(imagesDirectory);
 
   return {
     extend: require.resolve('../../../theme'),
@@ -24,25 +23,27 @@ module.exports = () => {
       if (foundDirectory) {
         const directory = foundDirectory.groups.directory;
         pageCtx.title = pageCtx.title || directory;
-        const localDirectory = path.resolve(
-          __dirname,
-          '..',
-          'assets',
-          'galleries',
-          directory
-        );
-        const images = fs.readdirSync(localDirectory);
-        const image = images[getRandomIntInclusive(0, images.length - 1)];
-        const publicDirectory = path.resolve(imagesDirectory, directory);
-        if (!fs.existsSync(publicDirectory)) {
+        if (!pageCtx.frontmatter.image) {
+          const localDirectory = path.resolve(
+            __dirname,
+            '..',
+            'assets',
+            'galleries',
+            directory
+          );
+          const images = fs.readdirSync(localDirectory);
+          const image = images[getRandomIntInclusive(0, images.length - 1)];
+          const publicDirectory = path.resolve(imagesDirectory, directory);
+          if (fs.existsSync(publicDirectory)) {
+            fs.rmdirSync(publicDirectory, { recursive: true, force: true });
+          }
           fs.mkdirSync(publicDirectory);
+          fs.copyFileSync(
+            path.resolve(localDirectory, image),
+            path.resolve(publicDirectory, image)
+          );
+          pageCtx.frontmatter.image = `/images/${directory}/${image}`;
         }
-        fs.copyFileSync(
-          path.resolve(localDirectory, image),
-          path.resolve(publicDirectory, image)
-        );
-        pageCtx.frontmatter.image =
-          pageCtx.frontmatter.image || `/images/${directory}/${image}`;
       }
     },
   };
