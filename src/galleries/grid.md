@@ -1,1 +1,3 @@
+---
+---
 <gallery-grid directory="test" />

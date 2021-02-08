@@ -1,1 +1,3 @@
-<gallery-slider class="h-screen" directory="test" />
+---
+---
+<gallery-slider directory="test" />
