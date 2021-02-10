@@ -5,9 +5,6 @@ export default {
     directory: {
       type: String,
     },
-    navImages: {
-      type: Array,
-    },
   },
   data: () => ({
     images: [],
@@ -25,8 +22,6 @@ export default {
           });
         });
       });
-    } else if (this.navImages) {
-      this.images.splice(0, this.images.length, ...this.navImages);
     }
   },
 };

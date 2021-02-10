@@ -14,15 +14,11 @@
 
 <script>
 import Gallery from "@mixins/gallery.js";
+import GallerySlider from "@mixins/gallerySlider.js";
 
 export default {
   name: "GallerySlider",
-  mixins: [Gallery],
-  methods: {
-    transitionName(mode) {
-      return mode === "next" ? "left" : "right";
-    }
-  }
+  mixins: [Gallery, GallerySlider],
 };
 </script>
 

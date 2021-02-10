@@ -15,14 +15,19 @@
 
 <script>
 import Gallery from "@mixins/gallery.js";
+import GallerySlider from "@mixins/gallerySlider.js";
 
 export default {
   name: "GalleryNavSlider",
-  mixins: [Gallery],
-  methods: {
-    transitionName(mode) {
-      return mode === "next" ? "left" : "right";
+  mixins: [Gallery, GallerySlider],
+  props: {
+    navImages: {
+      type: Array,
+      required: true,
     },
+  },
+  created() {
+    this.images.splice(0, this.images.length, ...this.navImages);
   },
 };
 </script>

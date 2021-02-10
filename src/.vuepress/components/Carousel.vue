@@ -3,8 +3,8 @@
     class="carousel relative flex justify-center items-center overflow-hidden bg-opacity-0 dark:bg-opacity-0"
   >
     <slot :display="display" :mode="mode"></slot>
-    <div class="left-0" @click="previous">&#x276E;</div>
-    <div class="right-0" @click="next">&#x276F;</div>
+    <button class="left-0" @click="previous">&#x276E;</button>
+    <button class="right-0" @click="next">&#x276F;</button>
   </div>
 </template>
 
@@ -12,14 +12,14 @@
 export default {
   name: "Carousel",
   props: {
-      items: {
-          type: Array,
-          required: true
-      },
+    items: {
+      type: Array,
+      required: true,
+    },
   },
   data: () => ({
     displayIndex: 0,
-    mode: "next"
+    mode: "next",
   }),
   computed: {
     display() {
@@ -41,7 +41,25 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-.carousel div {
-  @apply: absolute top-0 text-5xl px-4 min-h-full flex items-center select-none cursor-pointer bg-gray-400 bg-opacity-50;
+.carousel {
+  button {
+    @apply: absolute top-0 text-5xl px-4 min-h-full flex items-center select-none outline-none bg-gray-400 bg-opacity-50;
+
+    &:active {
+      @apply: bg-gray-600 bg-opacity-50;
+    }
+  }
+}
+
+.dark {
+  .carousel {
+    button {
+      @apply: bg-gray-600 bg-opacity-50;
+
+      &:active {
+        @apply: bg-gray-400 bg-opacity-50;
+      }
+    }
+  }
 }
 </style>
