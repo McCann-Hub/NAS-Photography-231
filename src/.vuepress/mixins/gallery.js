@@ -25,7 +25,7 @@ export default {
           });
         });
       });
-    } else {
+    } else if (this.navImages) {
       this.images.splice(0, this.images.length, ...this.navImages);
     }
   },

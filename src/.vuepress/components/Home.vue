@@ -1,6 +1,6 @@
 <template>
   <div class="min-h-full flex flex-col justify-center">
-    <gallery-slider class="h-full" :nav-images="galleries" />
+    <gallery-nav-slider class="h-full" :nav-images="galleries" />
   </div>
 </template>
 
