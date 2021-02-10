@@ -1,5 +1,5 @@
 <template>
-  <carousel v-bind="$attrs" v-slot="{ display, mode }">
+  <carousel :items="images" v-slot="{ display, mode }">
     <slide-transition :direction="transitionName(mode)">
       <img
         v-if="display"
@@ -13,8 +13,11 @@
 </template>
 
 <script>
+import Gallery from "@mixins/gallery.js";
+
 export default {
   name: "GallerySlider",
+  mixins: [Gallery],
   methods: {
     transitionName(mode) {
       return mode === "next" ? "left" : "right";
@@ -25,6 +28,6 @@ export default {
 
 <style lang="stylus" scoped>
 .carousel {
-  height: calc(var(--main-height) - 4.5rem);
+  height: calc(var(--main-height) - 5.25rem);
 }
 </style>

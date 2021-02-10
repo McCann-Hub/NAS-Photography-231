@@ -15,6 +15,7 @@ module.exports = (options = {}, ctx) => {
           darkMode: 'class', // or 'media' or 'class'
           variants: {
             extend: {
+              backgroundColor: ['active'],
               backgroundOpacity: ['dark'],
               textOpacity: ['dark'],
             },

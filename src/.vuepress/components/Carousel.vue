@@ -1,6 +1,6 @@
 <template>
   <div
-    class="carousel relative flex justify-center items-center overflow-hidden"
+    class="carousel relative flex justify-center items-center overflow-hidden bg-opacity-0 dark:bg-opacity-0"
   >
     <slot :display="display" :mode="mode"></slot>
     <div class="left-0" @click="previous">&#x276E;</div>
@@ -9,29 +9,32 @@
 </template>
 
 <script>
-import Gallery from "@mixins/gallery.js";
-
 export default {
   name: "Carousel",
-  mixins: [Gallery],
+  props: {
+      items: {
+          type: Array,
+          required: true
+      },
+  },
   data: () => ({
     displayIndex: 0,
     mode: "next"
   }),
   computed: {
     display() {
-      return this.images[this.displayIndex];
+      return this.items[this.displayIndex];
     },
   },
   methods: {
     next() {
       this.mode = "next";
-      this.displayIndex = (this.displayIndex + 1) % this.images.length;
+      this.displayIndex = (this.displayIndex + 1) % this.items.length;
     },
     previous() {
       this.mode = "previous";
       this.displayIndex =
-        (this.displayIndex - 1 + this.images.length) % this.images.length;
+        (this.displayIndex - 1 + this.items.length) % this.items.length;
     },
   },
 };
