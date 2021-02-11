@@ -16,7 +16,9 @@
             height="342.6"
           >
             <image
+              @load="onLoad"
               ref="image"
+              v-show="imageLoaded"
               href=""
               x="0"
               y="0"
@@ -75,6 +77,9 @@ function getRandomInt(max) {
 
 export default {
   name: "NotFound",
+  data: () => ({
+    imageLoaded: false,
+  }),
   mounted() {
     this.$refs.svg.style.setProperty(
       "--photo-rotation",
@@ -85,6 +90,11 @@ export default {
     ).then((image) => {
       this.$refs.image.setAttribute("href", image);
     });
+  },
+  methods: {
+    onLoad() {
+      this.imageLoaded = true;
+    },
   },
 };
 </script>
