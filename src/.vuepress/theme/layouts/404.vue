@@ -6,6 +6,26 @@
     <div class="flex flex-col justify-center">
       <h1 class="text-center text-5xl font-bold">Oops</h1>
       <svg ref="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 960">
+        <defs>
+          <pattern
+            id="image"
+            patternUnits="userSpaceOnUse"
+            x="277.1"
+            y="226.8"
+            width="405.9"
+            height="342.6"
+          >
+            <image
+              ref="image"
+              href=""
+              x="0"
+              y="0"
+              width="405.9"
+              height="342.6"
+              preserveAspectRatio="xMidYMid slice"
+            />
+          </pattern>
+        </defs>
         <g>
           <rect x="233.5" y="176.6" class="card" width="493" height="606.7" />
           <rect x="234.5" y="743.8" class="footer" width="491" height="39.5" />
@@ -23,15 +43,15 @@
             width="405.9"
             height="342.6"
           />
-          <polygon
+          <!--polygon
             class="image mountain"
-            points="617.6,569.3 274.6,569.3 446.1,397.8 		"
+            points="617.6,569.3 274.6,569.3 446.1,397.8"
           />
           <polygon
             class="image mountain top"
-            points="508.5,460.3 446.1,397.8 383.7,460.3 		"
+            points="508.5,460.3 446.1,397.8 383.7,460.3"
           />
-          <circle class="image sun" cx="581.2" cy="333.6" r="71.6" />
+          <circle class="image sun" cx="581.2" cy="333.6" r="71.6" /-->
         </g>
       </svg>
 
@@ -43,8 +63,14 @@
 </template>
 
 <script>
+import { galleryContext } from "@theme/utils/gallery.js";
+
 function getRandomArbitrary(min, max) {
   return Math.random() * (max - min) + min;
+}
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
 }
 
 export default {
@@ -54,6 +80,11 @@ export default {
       "--photo-rotation",
       `${getRandomArbitrary(-30, 30)}deg`
     );
+    galleryContext(
+      galleryContext.keys()[getRandomInt(galleryContext.keys().length)]
+    ).then((image) => {
+      this.$refs.image.setAttribute("href", image);
+    });
   },
 };
 </script>
@@ -84,7 +115,7 @@ export default {
 
 #not-found svg .image {
   animation: fade 30s linear;
-  fill: #b3e2e5;
+  fill: url(#image);
 }
 
 #not-found svg .image.mountain {

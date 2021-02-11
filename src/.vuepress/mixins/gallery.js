@@ -1,4 +1,4 @@
-import { galleryContext, directoryImages } from '../utils/gallery.js';
+import { galleryContext, directoryImages } from '@theme/utils/gallery.js';
 
 export default {
   props: {
