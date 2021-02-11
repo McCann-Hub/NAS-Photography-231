@@ -10,10 +10,12 @@ module.exports = (options = {}, ctx) => {
     } catch (e) {
       return Object.assign(
         {
-          purge: [
-            `${root}/!(dist|node_modules)/**/*.@(js|ts|md|vue|html)`,
-            `${vuepressDir}/**/*.@(js|ts|md|vue|html)`,
-          ],
+          purge: {
+            content: [
+              `${root}/!(dist|node_modules)/**/*.@(js|ts|md|vue|html)`,
+              `${vuepressDir}/**/*.@(js|ts|md|vue|html)`
+            ],
+          },
           darkMode: 'class', // or 'media' or 'class'
           variants: {
             extend: {
