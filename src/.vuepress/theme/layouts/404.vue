@@ -96,6 +96,7 @@ export default {
     onLoad() {
       const self = this;
       self.imageLoaded = true;
+      this.$forceUpdate();
       this.$nextTick(() => {
         self.$refs.image.classList.add('develop');
       });
@@ -130,10 +131,12 @@ export default {
 
 #not-found svg .image {
   fill: url(#image); /* #B3E2E5 */
+  opacity: 0;
 }
 
 #not-found svg .image.develop {
   animation: develop 30s linear;
+  opacity: 1;
 }
 
 /*
