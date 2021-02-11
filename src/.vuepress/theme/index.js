@@ -7,7 +7,9 @@ function getRandomIntInclusive(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive
 }
 
-module.exports = () => {
+module.exports = (themeConfig, { siteConfig }) => {
+  const { base } = siteConfig;
+
   const imagesDirectory = path.resolve(__dirname, '..', 'public', 'images');
   if (!fs.existsSync(imagesDirectory)) {
     fs.mkdirSync(imagesDirectory);
@@ -42,7 +44,7 @@ module.exports = () => {
             path.resolve(localDirectory, image),
             path.resolve(publicDirectory, image)
           );
-          pageCtx.frontmatter.image = `/images/${directory}/${image}`;
+          pageCtx.frontmatter.image = `${base}images/${directory}/${image}`;
         }
       }
     },
