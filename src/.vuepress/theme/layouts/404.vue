@@ -16,9 +16,8 @@
             height="342.6"
           >
             <image
-              @load="onLoad"
               ref="patternImage"
-              v-show="imageLoaded"
+              @load="onLoad"
               href=""
               x="0"
               y="0"
@@ -78,9 +77,6 @@ function getRandomInt(max) {
 
 export default {
   name: "NotFound",
-  data: () => ({
-    imageLoaded: false,
-  }),
   mounted() {
     this.$refs.svg.style.setProperty(
       "--photo-rotation",
@@ -94,12 +90,7 @@ export default {
   },
   methods: {
     onLoad() {
-      const self = this;
-      self.imageLoaded = true;
-      this.$forceUpdate();
-      this.$nextTick(() => {
-        self.$refs.image.classList.add('develop');
-      });
+      this.$refs.image.classList.add('develop');
     },
   },
 };
