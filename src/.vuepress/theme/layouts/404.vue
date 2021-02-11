@@ -17,7 +17,7 @@
           >
             <image
               @load="onLoad"
-              ref="image"
+              ref="patternImage"
               v-show="imageLoaded"
               href=""
               x="0"
@@ -39,6 +39,7 @@
             height="342.6"
           />
           <rect
+            ref="image"
             x="277.1"
             y="226.8"
             class="image"
@@ -80,6 +81,13 @@ export default {
   data: () => ({
     imageLoaded: false,
   }),
+  watch: {
+    imageLoaded(newVal) {
+      if (newVal) {
+        this.$refs.image.classList.add('develop');
+      }
+    },
+  },
   mounted() {
     this.$refs.svg.style.setProperty(
       "--photo-rotation",
@@ -88,7 +96,7 @@ export default {
     galleryContext(
       galleryContext.keys()[getRandomInt(galleryContext.keys().length)]
     ).then((image) => {
-      this.$refs.image.setAttribute("href", image);
+      this.$refs.patternImage.setAttribute("href", image);
     });
   },
   methods: {
@@ -124,10 +132,14 @@ export default {
 }
 
 #not-found svg .image {
-  animation: fade 30s linear;
-  fill: url(#image);
+  fill: url(#image); /* #B3E2E5 */
 }
 
+#not-found svg .image.develop {
+  animation: develop 30s linear;
+}
+
+/*
 #not-found svg .image.mountain {
   fill: #a26e3d;
 }
@@ -139,8 +151,9 @@ export default {
 #not-found svg .image.sun {
   fill: #eb6841;
 }
+*/
 
-@keyframes fade {
+@keyframes develop {
   0% {
     opacity: 0;
   }
