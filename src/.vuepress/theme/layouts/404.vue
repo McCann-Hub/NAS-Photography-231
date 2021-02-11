@@ -81,13 +81,6 @@ export default {
   data: () => ({
     imageLoaded: false,
   }),
-  watch: {
-    imageLoaded(newVal) {
-      if (newVal) {
-        this.$refs.image.classList.add('develop');
-      }
-    },
-  },
   mounted() {
     this.$refs.svg.style.setProperty(
       "--photo-rotation",
@@ -101,7 +94,11 @@ export default {
   },
   methods: {
     onLoad() {
-      this.imageLoaded = true;
+      const self = this;
+      self.imageLoaded = true;
+      this.$nextTick(() => {
+        self.$refs.image.classList.add('develop');
+      });
     },
   },
 };
