@@ -6,6 +6,7 @@
     "serve": "vuepress dev src",
     "build": "vuepress build src",
     "lint": "vue-cli-service lint",
+    "predeploy": "npm run build",
     "deploy": "push-dir --dir=dist --branch=main --cleanup"
   },
   "dependencies": {
