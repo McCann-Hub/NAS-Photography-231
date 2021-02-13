@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[50],{366:function(n,p,s){n.exports=s.p+"assets/img/yann-allegre-1408153-unsplash.dbdabeae.jpg"}}]);
