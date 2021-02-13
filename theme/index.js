@@ -159,6 +159,23 @@ module.exports = (themeConfig) => {
     themeConfigTailwindPluginOptions.tailwind || {}
   );
   /*
+   * configure imagemin plugin
+   */
+  const defaultImageminPluginOptions = {
+    disable: process.env.NODE_ENV !== 'production', // Disable during development
+    pngquant: {
+      quality: [0.6, 0.8],
+    },
+  };
+  const themeConfigImageminPluginOptions = {
+    ...pick(themeConfig, ['imagemin']),
+  };
+  const imageminPluginOptions = Object.assign(
+    {},
+    defaultImageminPluginOptions,
+    themeConfigImageminPluginOptions.imagemin || {}
+  );
+  /*
    * Integrate plugins
    */
   const plugins = [
@@ -166,6 +183,7 @@ module.exports = (themeConfig) => {
     require('../plugin-created'),
     ['seo', seoPluginOptions], // set SEO last so all the page data is extended
     [require('../plugin-tailwindcss'), tailwindPluginOptions],
+    [require('../plugin-imagemin'), imageminPluginOptions],
   ];
   /*
    *
