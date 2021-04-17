@@ -8,9 +8,9 @@ function getRandomIntInclusive(min, max) {
 }
 
 module.exports = (themeConfig, { siteConfig }) => {
-  const { base } = siteConfig;
+  const { base = '/' } = siteConfig;
 
-  const imagesDirectory = path.resolve(__dirname, '..', 'public', 'images');
+  const imagesDirectory = path.resolve(__dirname, '..', 'public', 'assets', 'img');
   if (!fs.existsSync(imagesDirectory)) {
     fs.mkdirSync(imagesDirectory);
   }
@@ -44,7 +44,7 @@ module.exports = (themeConfig, { siteConfig }) => {
             path.resolve(localDirectory, image),
             path.resolve(publicDirectory, image)
           );
-          pageCtx.frontmatter.image = `${base}images/${directory}/${image}`;
+          pageCtx.frontmatter.image = `${base}assets/img/${directory}/${image}`;
         }
       }
     },

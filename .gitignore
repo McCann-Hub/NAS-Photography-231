@@ -23,4 +23,4 @@ pnpm-debug.log*
 *.sw?
 
 #custom
-/src/.vuepress/public/images/*/*.*
+/src/.vuepress/public/assets/img/*/*.*
