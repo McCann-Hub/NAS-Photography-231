@@ -59,8 +59,8 @@ module.exports = {
         hostname: 'https://mccann-hub.github.io',
       },
     },
+    bugUrl: 'https://github.com/McCann-Hub/NAS-Photography-231/issues',
   },
-  bugUrl: 'https://github.com/McCann-Hub/NAS-Photography-231/issues',
   configureWebpack: {
     resolve: {
       alias: {
