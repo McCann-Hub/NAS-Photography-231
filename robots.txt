@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+Sitemap: https:/natevisuals.com/sitemap.xml
+Host: https://natevisuals.com
