@@ -1,11 +1,11 @@
 {
   "version": "1.0",
-  "name": "NAS Photography 231",
+  "name": "NAS Photography",
   "description": "A Vuepress powered blog",
   "icons": {
-    "60": "/NAS-Photography-231/firefox_app_60x60.png",
-    "128": "/NAS-Photography-231/firefox_app_128x128.png",
-    "512": "/NAS-Photography-231/firefox_app_512x512.png"
+    "60": "/firefox_app_60x60.png",
+    "128": "/firefox_app_128x128.png",
+    "512": "/firefox_app_512x512.png"
   },
   "developer": {
     "name": "McCann Hub",

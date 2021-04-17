@@ -3,7 +3,7 @@ const path = require('path');
 module.exports = {
   dest: './dist',
   base: process.env.NODE_ENV === 'production' ? '/NAS-Photography-231/' : '/',
-  title: 'NAS Photography 231',
+  title: 'NAS Photography',
   description: 'A Vuepress powered blog',
   themeConfig: {
     domain: 'https://mccann-hub.github.io',

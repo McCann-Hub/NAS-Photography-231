@@ -1,7 +1,7 @@
 <template>
   <carousel :items="images" v-slot="{ display, mode }">
     <slide-transition :direction="transitionName(mode)">
-      <nav-link v-if="display" :link="display.link" :key="display.name">
+      <nav-link v-if="display" :link="display.link" :key="display.name" class="flex items-center">
         <img
           :alt="display.name"
           :title="display.summary"

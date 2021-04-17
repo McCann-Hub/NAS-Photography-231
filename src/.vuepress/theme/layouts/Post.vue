@@ -17,7 +17,7 @@
         `updated: ${$page.lastUpdated}`
       }}</span>
     </div>
-    <Content class="px-8" />
+    <Content />
   </div>
 </template>
 
