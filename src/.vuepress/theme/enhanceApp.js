@@ -7,7 +7,6 @@ export default ({
 }) => {
   if (process.env.NODE_ENV === 'production')
     router.beforeEach((to, from, next) => {
-      console.log(to);
       if (to.path !== '/notFound.html') {
         next('/notFound.html');
       } else {
