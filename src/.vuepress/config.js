@@ -6,29 +6,21 @@ module.exports = {
   title: 'NAS Photography 231',
   description: 'A Vuepress powered blog',
   themeConfig: {
-    domain: 'http://localhost',
+    domain: 'https://mccann-hub.github.io',
     author: 'NAS Photography',
     logo: 'logo',
     dark: true,
     nav: [
       {
-        text: 'Hello',
-        link: '/'
+        text: 'Galleries',
+        link: '/gallery/',
       },
       {
-        text: 'World',
-        link: '/'
-      },
-      {
-        text: 'Foo',
+        text: 'About',
         items: [
           {
-            text: 'Bar1',
-            link: '/'
-          },
-          {
-            text: 'Bar2',
-            link: '/'
+            text: 'Me',
+            link: '#',
           },
         ],
       },
@@ -36,38 +28,45 @@ module.exports = {
     social: [
       {
         icon: 'FacebookIcon',
-        link: '/',
-        text: 'Facebook',
+        link: '#',
       },
       {
         icon: 'Instagram',
-        link: '/',
-        text: 'Instagram',
+        link: '#',
       },
       {
         icon: 'pinterest',
-        link: '/',
-        text: 'Pintrest',
+        link: '#',
       },
     ],
-    sitemap: {
-      hostname: 'http://localhost',
+    blog: {
+      directories: [
+        {
+          id: 'gallery',
+          dirname: 'galleries',
+          path: '/gallery/',
+          itemPermalink: '/gallery/:year/:month/:day/:slug',
+        },
+      ],
+      frontmatters: [
+        {
+          id: 'tag',
+          keys: ['tag', 'tags'],
+          path: '/tag/',
+        },
+      ],
+      sitemap: {
+        hostname: 'https://mccann-hub.github.io',
+      },
     },
-    directories: [
-      {
-        id: 'gallery',
-        dirname: 'galleries',
-        path: '/gallery/',
-        itemPermalink: '/gallery/:year/:month/:day/:slug',
-      },
-    ],
   },
+  bugUrl: 'https://github.com/McCann-Hub/NAS-Photography-231/issues',
   configureWebpack: {
     resolve: {
       alias: {
         '@assets': path.resolve(__dirname, 'assets'),
         '@galleries': path.resolve(__dirname, 'assets', 'galleries'),
-        '@mixins': path.resolve(__dirname, 'mixins')
+        '@mixins': path.resolve(__dirname, 'mixins'),
       },
     },
   },

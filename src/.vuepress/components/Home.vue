@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-full flex flex-col justify-center">
+  <div id="home" class="flex flex-col justify-center">
     <gallery-nav-slider class="h-full" :nav-images="galleries" />
   </div>
 </template>
@@ -23,3 +23,9 @@ export default {
   },
 };
 </script>
+
+<style lang="stylus" scoped>
+#home {
+  min-height: var(--main-height);
+}
+</style>

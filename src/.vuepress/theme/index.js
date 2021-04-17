@@ -16,7 +16,7 @@ module.exports = (themeConfig, { siteConfig }) => {
   }
 
   return {
-    extend: require.resolve('../../../theme'),
+    extend: '@mccann-hub/blog',
     extendPageData(pageCtx) {
       const directoryRegEx = /<gallery[\w-]+\s+[\s\w-="]*directory="(?<directory>[\w-]+)"[\s\w-="]*\/>/gi;
       const foundDirectory = directoryRegEx.exec(
