@@ -2,12 +2,11 @@ const path = require('path');
 
 module.exports = {
   dest: './dist',
-  base: process.env.NODE_ENV === 'production' ? '/NAS-Photography-231/' : '/',
-  title: 'NAS Photography',
+  title: "Nate's Visuals",
   description: 'A Vuepress powered blog',
   themeConfig: {
-    domain: 'https://mccann-hub.github.io',
-    author: 'NAS Photography',
+    domain: 'https://natevisuals.com',
+    author: 'Nate Smith',
     logo: 'logo',
     dark: true,
     nav: [
@@ -56,7 +55,7 @@ module.exports = {
         },
       ],
       sitemap: {
-        hostname: 'https://mccann-hub.github.io',
+        hostname: 'https://natevisuals.com',
       },
     },
     bugUrl: 'https://github.com/McCann-Hub/NAS-Photography-231/issues',
