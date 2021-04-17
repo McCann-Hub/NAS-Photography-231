@@ -5,5 +5,13 @@ export default ({
   siteData, // site metadata
   isServer, // is this enhancement applied in server-rendering or client
 }) => {
-  // ...apply enhancements to the app  
+  if (process.env.NODE_ENV === 'production')
+  router.beforeEach((to, from, next) => {
+    console.log(to);
+    if (to.path !== '/notFound.html') {
+      next('/notFound.html');
+    } else {
+      next();
+    }
+  }) 
 };
